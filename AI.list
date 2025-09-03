@@ -40,9 +40,11 @@ DOMAIN-SUFFIX,sentry.io
 DOMAIN-SUFFIX,stripe.com
 DOMAIN-SUFFIX,turn.livekit.cloud
 DOMAIN-KEYWORD,openai
-DOMAIN-SUFFIX,grok.com
-DOMAIN-SUFFIX,gemini.com
-DOMAIN-SUFFIX,claude.ai
+# 下面为自主添加
+DOMAIN-KEYWORD,claude
+DOMAIN-KEYWORD,grok
+DOMAIN-KEYWORD,gemini
+#下面为原文
 IP-CIDR,24.199.123.28/32,no-resolve
 IP-CIDR,64.23.132.171/32,no-resolve
 IP-ASN,20473,no-resolve
