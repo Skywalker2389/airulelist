@@ -44,6 +44,8 @@ DOMAIN-KEYWORD,openai
 DOMAIN-KEYWORD,claude
 DOMAIN-KEYWORD,grok
 DOMAIN-KEYWORD,gemini
+DOMAIN-KEYWORD,copilot
+DOMAIN-KEYWORD,perplexity
 #下面为原文
 IP-CIDR,24.199.123.28/32,no-resolve
 IP-CIDR,64.23.132.171/32,no-resolve
