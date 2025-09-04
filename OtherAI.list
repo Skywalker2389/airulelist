@@ -1,16 +1,17 @@
 # NAME: OtherAI
 # AUTHOR: lusgdragon
 # REPO: https://github.com/Skywalker2389/airulelist
-# UPDATED: 2025-09-04 19:20:00
+# UPDATED: 2025-09-04 22:20:00
 # DOMAIN: 7
 # DOMAIN-KEYWORD:4
-# DOMAIN-SUFFIX: 0
+# DOMAIN-SUFFIX: 1
 # IP-ASN: 0
 # IP-CIDR: 0
-# TOTAL: 4
+# TOTAL: 5
 # 除OpenAI以外的几个主流智能AI
 DOMAIN-KEYWORD,claude
 DOMAIN-KEYWORD,grok
 DOMAIN-KEYWORD,gemini
 DOMAIN-KEYWORD,copilot
 DOMAIN-KEYWORD,perplexity
+DOMAIN-SUFFIX,anthropic.com
