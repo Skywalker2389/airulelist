@@ -2,13 +2,13 @@
 # AUTHOR: lusgdragon
 # REPO: https://github.com/Skywalker2389/airulelist
 # UPDATED: 2025-09-04 22:20:00
-# DOMAIN: 7
-# DOMAIN-KEYWORD:4
+# DOMAIN: 0
+# DOMAIN-KEYWORD:5
 # DOMAIN-SUFFIX: 1
 # IP-ASN: 0
 # IP-CIDR: 0
-# TOTAL: 5
-# 除OpenAI以外的几个主流智能AI
+# TOTAL: 6
+# 除OpenAI以外的几个主流智能AI,配合使用
 DOMAIN-KEYWORD,claude
 DOMAIN-KEYWORD,grok
 DOMAIN-KEYWORD,gemini
