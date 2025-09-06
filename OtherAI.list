@@ -1,16 +1,16 @@
 # NAME: OtherAI
-# AUTHOR: lusgdragon
 # REPO: https://github.com/Skywalker2389/airulelist
-# UPDATED: 2025-09-04 22:20:00
-# DOMAIN: 0
-# DOMAIN-KEYWORD:5
-# DOMAIN-SUFFIX: 1
+# UPDATED: 2025-09-06 18:20:00
+# DOMAIN: 1
+# DOMAIN-KEYWORD:3
+# DOMAIN-SUFFIX: 2
 # IP-ASN: 0
 # IP-CIDR: 0
 # TOTAL: 6
 # 除OpenAI以外的几个主流智能AI,配合使用Openai、Gemini、Copilot、Claude已分别另有规则
 DOMAIN,pplx-res.cloudinary.com
 DOMAIN-KEYWORD,grok
+DOMAIN-KEYWORD,gemini
 DOMAIN-KEYWORD,perplexity
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,pplx.ai
