@@ -8,10 +8,9 @@
 # IP-ASN: 0
 # IP-CIDR: 0
 # TOTAL: 6
-# 除OpenAI以外的几个主流智能AI,配合使用
-DOMAIN-KEYWORD,claude
+# 除OpenAI以外的几个主流智能AI,配合使用Openai、Gemini、Copilot、Claude已分别另有规则
+DOMAIN,pplx-res.cloudinary.com
 DOMAIN-KEYWORD,grok
-DOMAIN-KEYWORD,gemini
-DOMAIN-KEYWORD,copilot
 DOMAIN-KEYWORD,perplexity
 DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,pplx.ai
