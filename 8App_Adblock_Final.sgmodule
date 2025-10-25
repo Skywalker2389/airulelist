@@ -1,0 +1,131 @@
+#!name=8App Adblock Module (Enhanced + Weibo)
+#!desc=Surge 专用去广告模块（增强版），针对京东/淘宝/天猫/咸鱼/知乎/微博/抖音/今日头条 的开屏与内置广告。已加入微博开屏和信息流拦截脚本占位。启用前请先备份 Surge 配置与证书。
+#!author=LuXiaokang + ChatGPT (GPT-5)
+#!date=2025-10-25
+#!category=Adblock
+#!system=ios
+#!icon=https://raw.githubusercontent.com/ddgksf2013/icon/main/adblock.png
+
+[General]
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 127.0.0.0/8
+
+########################################
+# MITM（注意：所有 hostname 必须在同一行）
+########################################
+[MITM]
+enable = true
+hostname = %APPEND%, api.m.jd.com, start.m.jd.com, m.360buyimg.com, jadserve.post.m.jd.com, jdkepler.jd.com, adsunion.jd.com, gw.alicdn.com, heic.alicdn.com, adashx.m.taobao.com, adashbc.m.taobao.com, acs.m.taobao.com, xianyuapi.taobao.com, m.taobao.com, m.tmall.com, api-access.pangolin-sdk-toutiao.com, pangolin-sdk-toutiao.com, pglstatp-toutiao.com, pglstatp.snssdk.com, mon.snssdk.com, log.snssdk.com, api.toutiao.com, ad.toutiao.com, api.amemv.com, aweme.snssdk.com, api-hl.amemv.com, api.zhihu.com, ads.zhihu.com, commercial-api.zhihu.com, appcloud.zhihu.com, mobile.zhihu.com, api.weibo.cn, wbapp.uve.weibo.com, adimg.uve.weibo.com, adstrategy.biz.weibo.com, sdkmonitor.biz.weibo.com
+
+########################################
+# Rule 区域（优先级：白名单->定向REJECT->通用REJECT）
+########################################
+[Rule]
+# —— 白名单（示例：银行类直连，按需扩展）
+DOMAIN-SUFFIX,ccb.com,DIRECT
+DOMAIN-SUFFIX,cmbchina.com,DIRECT
+DOMAIN-SUFFIX,bankcomm.com,DIRECT
+DOMAIN-SUFFIX,icbc.com.cn,DIRECT
+DOMAIN-SUFFIX,abchina.com,DIRECT
+
+# —— 8App 定向广告（REJECT）
+# 京东
+DOMAIN-SUFFIX,jadserve.post.m.jd.com,REJECT
+DOMAIN-SUFFIX,jdkepler.jd.com,REJECT
+DOMAIN-SUFFIX,adsunion.jd.com,REJECT
+DOMAIN,api.m.jd.com,REJECT
+
+# 淘宝 / 天猫 / 闲鱼
+DOMAIN-SUFFIX,gw.alicdn.com,REJECT
+DOMAIN-SUFFIX,heic.alicdn.com,REJECT
+DOMAIN-SUFFIX,adashx.m.taobao.com,REJECT
+DOMAIN-SUFFIX,adashbc.m.taobao.com,REJECT
+DOMAIN-SUFFIX,adash.m.taobao.com,REJECT
+DOMAIN-SUFFIX,xianyuapi.taobao.com,REJECT
+DOMAIN-SUFFIX,acs.m.taobao.com,REJECT
+
+# 今日头条 / 抖音
+DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT
+DOMAIN-SUFFIX,api-access.pangolin-sdk-toutiao.com,REJECT
+DOMAIN-SUFFIX,pglstatp-toutiao.com,REJECT
+DOMAIN-SUFFIX,pglstatp.snssdk.com,REJECT
+DOMAIN-SUFFIX,mon.snssdk.com,REJECT
+DOMAIN-SUFFIX,log.snssdk.com,REJECT
+DOMAIN-SUFFIX,api.toutiao.com,REJECT
+DOMAIN-SUFFIX,ad.toutiao.com,REJECT
+DOMAIN-SUFFIX,api.amemv.com,REJECT
+DOMAIN-SUFFIX,aweme.snssdk.com,REJECT
+DOMAIN-SUFFIX,api-hl.amemv.com,REJECT
+
+# 知乎
+DOMAIN-SUFFIX,zhihu.com,REJECT
+DOMAIN,api.zhihu.com,REJECT
+DOMAIN-SUFFIX,ads.zhihu.com,REJECT
+DOMAIN-SUFFIX,commercial-api.zhihu.com,REJECT
+
+# 微博
+DOMAIN-SUFFIX,weibo.com,REJECT
+DOMAIN-SUFFIX,api.weibo.cn,REJECT
+DOMAIN-SUFFIX,wbapp.uve.weibo.com,REJECT
+DOMAIN-SUFFIX,adimg.uve.weibo.com,REJECT
+DOMAIN-SUFFIX,adstrategy.biz.weibo.com,REJECT
+DOMAIN-SUFFIX,sdkmonitor.biz.weibo.com,REJECT
+
+# —— 可选通用广告集合（按需启用）
+# RULE-SET,https://raw.githubusercontent.com/ddgksf2013/Modules/main/Adblock.list,REJECT
+
+########################################
+# URL Rewrite（更精确地拦截启动/开屏/splash 接口）
+########################################
+[URL Rewrite]
+# 京东 - 启动接口示例
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$  reject
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=hotWords  reject
+
+# 淘宝 / 闲鱼 - 图片/广告接口
+^https?:\/\/gw\.alicdn\.com\/.*\.(jpg|png|gif)$  reject
+^https?:\/\/adashx\.m\.taobao\.com\/.+$  reject
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.ads  reject
+
+# 今日头条 / 抖音 - pangolin / aweme 广告接口
+^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk  reject
+^https?:\/\/pglstatp\.toutiao\.com\/.*  reject
+^https?:\/\/.*pangolin-sdk-toutiao\.com\/.*  reject
+^https?:\/\/api\.amemv\.com\/aweme\/v\d+\/feed  reject
+^https?:\/\/aweme\.snssdk\.com\/.*\/ad\/.*  reject
+^https?:\/\/.*snssdk\.com\/.*\/ad\/.*  reject
+
+# 知乎 - 商业/广告接口
+^https?:\/\/api\.zhihu\.com\/(commercial_api|ad-style-service|zst|fringe)  reject
+
+# 微博 - 启动与广告相关接口
+^https?:\/\/wbapp\.uve\.weibo\.com\/wbapplua\/wbpullad\.lua  reject
+^https?:\/\/adstrategy\.biz\.weibo\.com\/v3\/strategy\/ad  reject
+^https?:\/\/sdkmonitor\.biz\.weibo\.com\/expose-monitor  reject
+^https?:\/\/api\.weibo\.cn\/2\/client\/launch  reject
+
+# 宽泛（实验性 - 可能误杀，默认注释）
+# ^https?:\/\/.*(splash|start|launch|open|ad|advert).*  reject
+
+########################################
+# Script - 已加入微博开屏与信息流脚本占位（请上传脚本到 GitHub 并替换 <RAW_SCRIPT_URL>）
+########################################
+[Script]
+# 清广告 JSON（用于 api.weibo.cn 的返回体清洗，保留主流程）
+ClearWeiboLaunch = type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/2\/client\/launch,requires-body=1,script-path=https://raw.githubusercontent.com/<YOUR_USERNAME>/<YOUR_REPO>/main/clearAdJson.js,timeout=5
+
+# 对 wbpullad.lua / adstrategy / expose-monitor 返回 204（图片/资源/策略类接口可直接返回 204）
+WB_Splash_Blocker = type=http-response,pattern=^https?:\/\/wbapp\.uve\.weibo\.com\/wbapplua\/wbpullad\.lua,requires-body=0,script-path=https://raw.githubusercontent.com/<YOUR_USERNAME>/<YOUR_REPO>/main/return204.js,timeout=5
+WB_AdStrategy_Blocker = type=http-response,pattern=^https?:\/\/adstrategy\.biz\.weibo\.com\/v3\/strategy\/ad,requires-body=0,script-path=https://raw.githubusercontent.com/<YOUR_USERNAME>/<YOUR_REPO>/main/return204.js,timeout=5
+WB_ExposeMonitor_Blocker = type=http-response,pattern=^https?:\/\/sdkmonitor\.biz\.weibo\.com\/expose-monitor,requires-body=0,script-path=https://raw.githubusercontent.com/<YOUR_USERNAME>/<YOUR_REPO>/main/return204.js,timeout=5
+
+# 信息流广告（feeds）清理（可选，可能影响推荐机制）
+WB_Feed_Ads_Filter = type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/2\/(statuses|stories|searchall)\/(unread|timeline|hot_timeline),requires-body=1,script-path=https://raw.githubusercontent.com/<YOUR_USERNAME>/<YOUR_REPO>/main/clearAdJson.js,timeout=8
+
+########################################
+# 说明（请保留）
+########################################
+# 1) 上传 clearAdJson.js 与 return204.js 到你的 GitHub 仓库（main 分支），
+#    然后把上面 <YOUR_USERNAME> / <YOUR_REPO> 替换为你的 GitHub 用户名和仓库名。
+# 2) 导入模块到 Surge（Modules -> Add Module -> From URL -> raw.githubusercontent.com/.../8App_Adblock_Enhanced_With_Scripts.sgmodule）
+# 3) 启用模块并确保 Surge 已安装证书和 MITM 生效。
+# 4) 若出现误杀或功能异常，可临时禁用信息流过滤规则（WB_Feed_Ads_Filter）或逐条禁用脚本以排查问题。

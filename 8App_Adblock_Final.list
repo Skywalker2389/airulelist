@@ -1,0 +1,35 @@
+# 8App Adblock Rule List (Enhanced + Weibo)
+# 仅包含纯规则项（可用于 RULE-SET 或其他工具）
+
+DOMAIN-SUFFIX,jadserve.post.m.jd.com,REJECT
+DOMAIN-SUFFIX,jdkepler.jd.com,REJECT
+DOMAIN-SUFFIX,adsunion.jd.com,REJECT
+DOMAIN,api.m.jd.com,REJECT
+DOMAIN-SUFFIX,gw.alicdn.com,REJECT
+DOMAIN-SUFFIX,heic.alicdn.com,REJECT
+DOMAIN-SUFFIX,adashx.m.taobao.com,REJECT
+DOMAIN-SUFFIX,adashbc.m.taobao.com,REJECT
+DOMAIN-SUFFIX,adash.m.taobao.com,REJECT
+DOMAIN-SUFFIX,xianyuapi.taobao.com,REJECT
+DOMAIN-SUFFIX,acs.m.taobao.com,REJECT
+DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT
+DOMAIN-SUFFIX,api-access.pangolin-sdk-toutiao.com,REJECT
+DOMAIN-SUFFIX,pglstatp-toutiao.com,REJECT
+DOMAIN-SUFFIX,pglstatp.snssdk.com,REJECT
+DOMAIN-SUFFIX,mon.snssdk.com,REJECT
+DOMAIN-SUFFIX,log.snssdk.com,REJECT
+DOMAIN-SUFFIX,api.toutiao.com,REJECT
+DOMAIN-SUFFIX,ad.toutiao.com,REJECT
+DOMAIN-SUFFIX,api.amemv.com,REJECT
+DOMAIN-SUFFIX,aweme.snssdk.com,REJECT
+DOMAIN-SUFFIX,api-hl.amemv.com,REJECT
+DOMAIN-SUFFIX,zhihu.com,REJECT
+DOMAIN,api.zhihu.com,REJECT
+DOMAIN-SUFFIX,ads.zhihu.com,REJECT
+DOMAIN-SUFFIX,commercial-api.zhihu.com,REJECT
+DOMAIN-SUFFIX,weibo.com,REJECT
+DOMAIN-SUFFIX,api.weibo.cn,REJECT
+DOMAIN-SUFFIX,wbapp.uve.weibo.com,REJECT
+DOMAIN-SUFFIX,adimg.uve.weibo.com,REJECT
+DOMAIN-SUFFIX,adstrategy.biz.weibo.com,REJECT
+DOMAIN-SUFFIX,sdkmonitor.biz.weibo.com,REJECT
