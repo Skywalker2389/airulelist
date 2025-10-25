@@ -111,15 +111,15 @@ DOMAIN-SUFFIX,sdkmonitor.biz.weibo.com,REJECT
 ########################################
 [Script]
 # 清广告 JSON（用于 api.weibo.cn 的返回体清洗，保留主流程）
-ClearWeiboLaunch = type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/2\/client\/launch,requires-body=1,script-path=https://raw.githubusercontent.com/<YOUR_USERNAME>/<YOUR_REPO>/main/clearAdJson.js,timeout=5
+ClearWeiboLaunch = type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/2\/client\/launch,requires-body=1,script-path=https://raw.githubusercontent.com/Skywalker2389/airulelist/refs/heads/main/clearAdJson.js,timeout=5
 
 # 对 wbpullad.lua / adstrategy / expose-monitor 返回 204（图片/资源/策略类接口可直接返回 204）
-WB_Splash_Blocker = type=http-response,pattern=^https?:\/\/wbapp\.uve\.weibo\.com\/wbapplua\/wbpullad\.lua,requires-body=0,script-path=https://raw.githubusercontent.com/<YOUR_USERNAME>/<YOUR_REPO>/main/return204.js,timeout=5
-WB_AdStrategy_Blocker = type=http-response,pattern=^https?:\/\/adstrategy\.biz\.weibo\.com\/v3\/strategy\/ad,requires-body=0,script-path=https://raw.githubusercontent.com/<YOUR_USERNAME>/<YOUR_REPO>/main/return204.js,timeout=5
-WB_ExposeMonitor_Blocker = type=http-response,pattern=^https?:\/\/sdkmonitor\.biz\.weibo\.com\/expose-monitor,requires-body=0,script-path=https://raw.githubusercontent.com/<YOUR_USERNAME>/<YOUR_REPO>/main/return204.js,timeout=5
+WB_Splash_Blocker = type=http-response,pattern=^https?:\/\/wbapp\.uve\.weibo\.com\/wbapplua\/wbpullad\.lua,requires-body=0,script-path=https://raw.githubusercontent.com/Skywalker2389/airulelist/refs/heads/main/return204.js,timeout=5
+WB_AdStrategy_Blocker = type=http-response,pattern=^https?:\/\/adstrategy\.biz\.weibo\.com\/v3\/strategy\/ad,requires-body=0,script-path=https://raw.githubusercontent.com/Skywalker2389/airulelist/refs/heads/main/return204.js,timeout=5
+WB_ExposeMonitor_Blocker = type=http-response,pattern=^https?:\/\/sdkmonitor\.biz\.weibo\.com\/expose-monitor,requires-body=0,script-path=https://raw.githubusercontent.com/Skywalker2389/airulelist/refs/heads/main/return204.js,timeout=5
 
 # 信息流广告（feeds）清理（可选，可能影响推荐机制）
-WB_Feed_Ads_Filter = type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/2\/(statuses|stories|searchall)\/(unread|timeline|hot_timeline),requires-body=1,script-path=https://raw.githubusercontent.com/<YOUR_USERNAME>/<YOUR_REPO>/main/clearAdJson.js,timeout=8
+WB_Feed_Ads_Filter = type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/2\/(statuses|stories|searchall)\/(unread|timeline|hot_timeline),requires-body=1,script-path=https://raw.githubusercontent.com/Skywalker2389/airulelist/refs/heads/main/clearAdJson.js,timeout=8
 
 ########################################
 # 说明（请保留）
