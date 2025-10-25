@@ -1,0 +1,56 @@
+#!name=8App Adblock Module
+#!desc=Surge 专用去广告模块，仅针对京东、淘宝、天猫、闲鱼、知乎、微博、抖音、今日头条。
+#!author=LuXiaokang + ChatGPT (GPT-5)
+#!date=2025-10-25
+#!category=Adblock
+#!system=ios
+#!icon=https://raw.githubusercontent.com/ddgksf2013/icon/main/adblock.png
+
+[General]
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 127.0.0.0/8
+
+[MITM]
+enable = true
+hostname = %APPEND%
+api.m.jd.com, start.m.jd.com, m.360buyimg.com,
+gw.alicdn.com, heic.alicdn.com, adashx.m.taobao.com, adashbc.m.taobao.com, acs.m.taobao.com, xianyuapi.taobao.com, m.taobao.com, m.tmall.com,
+api.zhihu.com, appcloud.zhihu.com, mobile.zhihu.com,
+api.weibo.cn, wbapp.uve.weibo.com, adimg.uve.weibo.com,
+api.amemv.com, mon.snssdk.com, ib.snssdk.com, log.snssdk.com, pangolin.snssdk.com, pangolin-sdk-toutiao.com, pglstatp-toutiao.com, ad.toutiao.com, api.toutiao.com
+
+[Rule]
+DOMAIN-SUFFIX,jadserve.post.m.jd.com,REJECT
+DOMAIN-SUFFIX,jdkepler.jd.com,REJECT
+DOMAIN-SUFFIX,adsunion.jd.com,REJECT
+DOMAIN-SUFFIX,gw.alicdn.com,REJECT
+DOMAIN-SUFFIX,heic.alicdn.com,REJECT
+DOMAIN-SUFFIX,adashx.m.taobao.com,REJECT
+DOMAIN-SUFFIX,adashbc.m.taobao.com,REJECT
+DOMAIN-SUFFIX,adash.m.taobao.com,REJECT
+DOMAIN-SUFFIX,xianyuapi.taobao.com,REJECT
+DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT
+DOMAIN-SUFFIX,pglstatp-toutiao.com,REJECT
+DOMAIN-SUFFIX,ad.toutiao.com,REJECT
+DOMAIN-SUFFIX,mon.snssdk.com,REJECT
+DOMAIN-SUFFIX,ib.snssdk.com,REJECT
+DOMAIN-SUFFIX,log.snssdk.com,REJECT
+DOMAIN-SUFFIX,pangolin.snssdk.com,REJECT
+DOMAIN-SUFFIX,zhihu.com,REJECT
+DOMAIN,api.zhihu.com,REJECT
+DOMAIN-SUFFIX,wbapp.uve.weibo.com,REJECT
+DOMAIN-SUFFIX,adimg.uve.weibo.com,REJECT
+
+[URL Rewrite]
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$  reject
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=hotWords  reject
+^https?:\/\/gw\.alicdn\.com\/.*\.(jpg|png|gif)$  reject
+^https?:\/\/adashx\.m\.taobao\.com\/.+$  reject
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.ads  reject
+^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk  reject
+^https?:\/\/api\.amemv\.com\/aweme\/v\d\/feed  reject
+^https?:\/\/.+\.snssdk\.com\/.+\/ad\/  reject
+^https?:\/\/api\.zhihu\.com\/(commercial_api|ad-style-service|zst|fringe)  reject
+^https?:\/\/api\.weibo\.cn\/2\/(ad|statuses\/unread)  reject
+^https?:\/\/wbapp\.uve\.weibo\.com\/wbapplua\/wbapplua\/ad\/launch  reject
+
+[Script]
