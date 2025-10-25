@@ -1,0 +1,123 @@
+#!name=8App Adblock Module (Enhanced)
+#!desc=Surge 专用去广告模块（增强版），针对京东/淘宝/天猫/咸鱼/知乎/微博/抖音/今日头条 的开屏与内置广告。启用前请先备份 Surge 配置与证书。
+#!author=LuXiaokang + ChatGPT (GPT-5)
+#!date=2025-10-25
+#!category=Adblock
+#!system=ios
+#!icon=https://raw.githubusercontent.com/ddgksf2013/icon/main/adblock.png
+
+[General]
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 127.0.0.0/8
+
+########################################
+# MITM（注意：所有 hostname 必须在同一行）
+# 把下面全部放在一行：%APPEND%, <list...>
+########################################
+[MITM]
+enable = true
+hostname = %APPEND%, api.m.jd.com, start.m.jd.com, m.360buyimg.com, jadserve.post.m.jd.com, jdkepler.jd.com, adsunion.jd.com, gw.alicdn.com, heic.alicdn.com, adashx.m.taobao.com, adashbc.m.taobao.com, acs.m.taobao.com, xianyuapi.taobao.com, m.taobao.com, m.tmall.com, api-access.pangolin-sdk-toutiao.com, pangolin-sdk-toutiao.com, pglstatp-toutiao.com, pglstatp.snssdk.com, mon.snssdk.com, log.snssdk.com, api.toutiao.com, ad.toutiao.com, api.amemv.com, aweme.snssdk.com, api-hl.amemv.com, api.zhihu.com, ads.zhihu.com, commercial-api.zhihu.com, appcloud.zhihu.com, mobile.zhihu.com, api.weibo.cn, wbapp.uve.weibo.com, adimg.uve.weibo.com
+
+########################################
+# Rule 区域（优先级：白名单->定向REJECT->通用REJECT）
+########################################
+[Rule]
+# —— 白名单（示例：银行类直连，按需扩展）
+DOMAIN-SUFFIX,ccb.com,DIRECT
+DOMAIN-SUFFIX,cmbchina.com,DIRECT
+DOMAIN-SUFFIX,bankcomm.com,DIRECT
+DOMAIN-SUFFIX,icbc.com.cn,DIRECT
+DOMAIN-SUFFIX,abchina.com,DIRECT
+
+# —— 8App 定向广告（REJECT）
+# 京东
+DOMAIN-SUFFIX,jadserve.post.m.jd.com,REJECT
+DOMAIN-SUFFIX,jdkepler.jd.com,REJECT
+DOMAIN-SUFFIX,adsunion.jd.com,REJECT
+DOMAIN,api.m.jd.com,REJECT
+
+# 淘宝 / 天猫 / 闲鱼
+DOMAIN-SUFFIX,gw.alicdn.com,REJECT
+DOMAIN-SUFFIX,heic.alicdn.com,REJECT
+DOMAIN-SUFFIX,adashx.m.taobao.com,REJECT
+DOMAIN-SUFFIX,adashbc.m.taobao.com,REJECT
+DOMAIN-SUFFIX,adash.m.taobao.com,REJECT
+DOMAIN-SUFFIX,xianyuapi.taobao.com,REJECT
+DOMAIN-SUFFIX,acs.m.taobao.com,REJECT
+
+# 今日头条 / 抖音
+DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT
+DOMAIN-SUFFIX,api-access.pangolin-sdk-toutiao.com,REJECT
+DOMAIN-SUFFIX,pglstatp-toutiao.com,REJECT
+DOMAIN-SUFFIX,pglstatp.snssdk.com,REJECT
+DOMAIN-SUFFIX,mon.snssdk.com,REJECT
+DOMAIN-SUFFIX,log.snssdk.com,REJECT
+DOMAIN-SUFFIX,api.toutiao.com,REJECT
+DOMAIN-SUFFIX,ad.toutiao.com,REJECT
+DOMAIN-SUFFIX,api.amemv.com,REJECT
+DOMAIN-SUFFIX,aweme.snssdk.com,REJECT
+DOMAIN-SUFFIX,api-hl.amemv.com,REJECT
+
+# 知乎
+DOMAIN-SUFFIX,zhihu.com,REJECT
+DOMAIN,api.zhihu.com,REJECT
+DOMAIN-SUFFIX,ads.zhihu.com,REJECT
+DOMAIN-SUFFIX,commercial-api.zhihu.com,REJECT
+
+# 微博
+DOMAIN-SUFFIX,weibo.com,REJECT
+DOMAIN-SUFFIX,api.weibo.cn,REJECT
+DOMAIN-SUFFIX,wbapp.uve.weibo.com,REJECT
+DOMAIN-SUFFIX,adimg.uve.weibo.com,REJECT
+
+# —— 可选通用广告集合（按需启用）
+# RULE-SET,https://raw.githubusercontent.com/ddgksf2013/Modules/main/Adblock.list,REJECT
+
+########################################
+# URL Rewrite（更精确地拦截启动/开屏/splash 接口）
+########################################
+[URL Rewrite]
+# 京东 - 启动接口示例
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$  reject
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=hotWords  reject
+
+# 淘宝 / 闲鱼 - 图片/广告接口
+^https?:\/\/gw\.alicdn\.com\/.*\.(jpg|png|gif)$  reject
+^https?:\/\/adashx\.m\.taobao\.com\/.+$  reject
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.ads  reject
+
+# 今日头条 / 抖音 - pangolin / aweme 广告接口
+^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk  reject
+^https?:\/\/pglstatp\.toutiao\.com\/.*  reject
+^https?:\/\/.*pangolin-sdk-toutiao\.com\/.*  reject
+^https?:\/\/api\.amemv\.com\/aweme\/v\d+\/feed  reject
+^https?:\/\/aweme\.snssdk\.com\/.*\/ad\/.*  reject
+^https?:\/\/.*snssdk\.com\/.*\/ad\/.*  reject
+
+# 知乎 - 商业/广告接口
+^https?:\/\/api\.zhihu\.com\/(commercial_api|ad-style-service|zst|fringe)  reject
+
+# 微博
+^https?:\/\/api\.weibo\.cn\/2\/(ad|statuses\/unread)  reject
+^https?:\/\/wbapp\.uve\.weibo\.com\/wbapplua\/wbapplua\/ad\/launch  reject
+
+# 宽泛（实验性 - 可能误杀，默认注释）
+# ^https?:\/\/.*(splash|start|launch|open|ad|advert).*  reject
+
+########################################
+# Script - 需要你把脚本上传到可访问 raw URL（例如 GitHub Gist 或仓库），
+# 然后把 <RAW_SCRIPT_URL> 替换为真实地址并取消注释以启用.
+########################################
+[Script]
+# 通用清广告 JSON（示例，需上传脚本后启用）
+# ClearAdJson = type=http-response,pattern=^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk,requires-body=1,script-path=<RAW_SCRIPT_URL>/clearAdJson.js,timeout=5
+# ClearZhihuAd = type=http-response,pattern=^https?:\/\/api\.zhihu\.com\/.*,requires-body=1,script-path=<RAW_SCRIPT_URL>/clearAdJson.js,timeout=5
+
+# 对图片/资源返回 204（实验性，谨慎使用）
+# Return204 = type=http-response,pattern=^https?:\/\/gw\.alicdn\.com\/.*\.(jpg|png|gif)$,requires-body=0,script-path=<RAW_SCRIPT_URL>/return204.js,timeout=5
+
+########################################
+# 说明（请保留）
+########################################
+# 1) 此模块仅针对列出的 8 个 App 的常见广告接口进行拦截，使用时务必启用 MITM 并安装 Surge 证书.
+# 2) 若出现功能异常（登录/支付/推送等），请先禁用本模块或删除有问题的规则逐条排查.
+# 3) 若需更精准拦截，请使用 Surge 的会话（Session）功能抓包并添加对应 URL-REGEX 或 http-response 脚本.
