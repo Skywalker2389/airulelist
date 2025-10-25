@@ -109,11 +109,11 @@ DOMAIN-SUFFIX,adimg.uve.weibo.com,REJECT
 ########################################
 [Script]
 # 通用清广告 JSON（示例，需上传脚本后启用）
-# ClearAdJson = type=http-response,pattern=^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk,requires-body=1,script-path=<RAW_SCRIPT_URL>/clearAdJson.js,timeout=5
-# ClearZhihuAd = type=http-response,pattern=^https?:\/\/api\.zhihu\.com\/.*,requires-body=1,script-path=<RAW_SCRIPT_URL>/clearAdJson.js,timeout=5
+# ClearAdJson = type=http-response,pattern=^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk,requires-body=1,script-path=https://raw.githubusercontent.com/Skywalker2389/airulelist/refs/heads/main/clearAdJson.js,timeout=5
+# ClearZhihuAd = type=http-response,pattern=^https?:\/\/api\.zhihu\.com\/.*,requires-body=1,script-path=https://raw.githubusercontent.com/Skywalker2389/airulelist/refs/heads/main/clearAdJson.js,timeout=5
 
 # 对图片/资源返回 204（实验性，谨慎使用）
-# Return204 = type=http-response,pattern=^https?:\/\/gw\.alicdn\.com\/.*\.(jpg|png|gif)$,requires-body=0,script-path=<RAW_SCRIPT_URL>/return204.js,timeout=5
+# Return204 = type=http-response,pattern=^https?:\/\/gw\.alicdn\.com\/.*\.(jpg|png|gif)$,requires-body=0,script-path=https://raw.githubusercontent.com/Skywalker2389/airulelist/refs/heads/main/return204.js,timeout=5
 
 ########################################
 # 说明（请保留）
