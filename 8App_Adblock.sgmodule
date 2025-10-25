@@ -11,12 +11,7 @@ skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 127.0.0.0/8
 
 [MITM]
 enable = true
-hostname = %APPEND%
-api.m.jd.com, start.m.jd.com, m.360buyimg.com,
-gw.alicdn.com, heic.alicdn.com, adashx.m.taobao.com, adashbc.m.taobao.com, acs.m.taobao.com, xianyuapi.taobao.com, m.taobao.com, m.tmall.com,
-api.zhihu.com, appcloud.zhihu.com, mobile.zhihu.com,
-api.weibo.cn, wbapp.uve.weibo.com, adimg.uve.weibo.com,
-api.amemv.com, mon.snssdk.com, ib.snssdk.com, log.snssdk.com, pangolin.snssdk.com, pangolin-sdk-toutiao.com, pglstatp-toutiao.com, ad.toutiao.com, api.toutiao.com
+hostname = %APPEND%, api.m.jd.com, start.m.jd.com, m.360buyimg.com, gw.alicdn.com, heic.alicdn.com, adashx.m.taobao.com, adashbc.m.taobao.com, acs.m.taobao.com, xianyuapi.taobao.com, m.taobao.com, m.tmall.com, api.zhihu.com, appcloud.zhihu.com, mobile.zhihu.com, api.weibo.cn, wbapp.uve.weibo.com, adimg.uve.weibo.com, api.amemv.com, mon.snssdk.com, ib.snssdk.com, log.snssdk.com, pangolin.snssdk.com, pangolin-sdk-toutiao.com, pglstatp-toutiao.com, ad.toutiao.com, api.toutiao.com
 
 [Rule]
 DOMAIN-SUFFIX,jadserve.post.m.jd.com,REJECT
