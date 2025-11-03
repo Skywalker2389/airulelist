@@ -1,0 +1,31 @@
+# NAME: zdy
+# AUTHOR: lusgdragon
+# REPO: https://github.com/Skywalker2389/airulelist
+# UPDATED: 2025-11-04 22:20:00
+# DOMAIN: 0
+# DOMAIN-KEYWORD:5
+# DOMAIN-SUFFIX: 1
+# IP-ASN: 0
+# IP-CIDR: 0
+# TOTAL: 6
+# 自定义不用代理、使用DIRECT策略的域名
+
+# > 银行类应用
+DOMAIN-KEYWORD,ccb
+DOMAIN-KEYWORD,cmbchina
+DOMAIN-SUFFIX,ccb.com
+DOMAIN-SUFFIX,cmbchina.com
+DOMAIN-SUFFIX,bankcomm.com
+DOMAIN-SUFFIX,icbc.com.cn
+DOMAIN-SUFFIX,abchina.com
+
+# > LinuxDo社区
+DOMAIN-SUFFIX,linux.do
+
+# > 在线小说网站
+DOMAIN-SUFFIX,biqukun.org
+DOMAIN-SUFFIX,bswtan.com
+DOMAIN-SUFFIX,qodown.com
+
+
+
