@@ -21,7 +21,14 @@ DOMAIN-SUFFIX,abchina.com
 
 # > LinuxDo社区
 DOMAIN,linux.do
+
+# > 今日头条pro
 DOMAIN,ib.snssdk.com
+
+# > Spotify开会员后
+DOMAIN-SUFFIX,spotify.com
+DOMAIN-SUFFIX,spotifycdn.com
+DOMAIN-KEYWORD,-spotify-com
 
 # > 在线小说网站
 DOMAIN-SUFFIX,biqukun.org
