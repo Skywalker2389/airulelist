@@ -29,6 +29,7 @@ DOMAIN,ib.snssdk.com
 DOMAIN-SUFFIX,spotify.com
 DOMAIN-SUFFIX,spotifycdn.com
 DOMAIN-KEYWORD,-spotify-com
+USER-AGENT,*Spotify*
 
 # > 在线小说网站
 DOMAIN-SUFFIX,biqukun.org
