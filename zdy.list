@@ -35,3 +35,6 @@ USER-AGENT,*Spotify*
 DOMAIN-SUFFIX,biqukun.org
 DOMAIN-SUFFIX,bswtan.com
 DOMAIN-SUFFIX,qodown.com
+
+# > 盘Ta网
+DOMAIN-SUFFIX,91panta.cn
