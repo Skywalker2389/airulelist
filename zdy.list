@@ -20,7 +20,7 @@ DOMAIN-SUFFIX,icbc.com.cn
 DOMAIN-SUFFIX,abchina.com
 
 # > LinuxDo社区
-DOMAIN,linux.do
+# DOMAIN,linux.do
 
 # > 今日头条pro
 DOMAIN,ib.snssdk.com
