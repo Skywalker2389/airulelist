@@ -19,8 +19,8 @@ DOMAIN-SUFFIX,bankcomm.com
 DOMAIN-SUFFIX,icbc.com.cn
 DOMAIN-SUFFIX,abchina.com
 
-# > LinuxDo社区
-# DOMAIN,linux.do
+# > 音乐社区
+DOMAIN,y.wjhe.top
 
 # > 今日头条pro
 DOMAIN,ib.snssdk.com
