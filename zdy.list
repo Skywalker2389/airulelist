@@ -41,5 +41,11 @@ DOMAIN-SUFFIX,91panta.cn
 DOMAIN-SUFFIX,115cdn.com
 DOMAIN-SUFFIX,115vod.com
 
+# > tag网站
+DOMAIN-SUFFIX,tagss.pro
+DOMAIN-SUFFIX,tagss11.pro
+DOMAIN-SUFFIX,tagweb.vip
+DOMAIN-SUFFIX,tagxx.vip
+
 # > 字幕库
 DOMAIN-SUFFIX,zimuku.org
