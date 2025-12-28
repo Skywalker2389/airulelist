@@ -1,7 +1,7 @@
 # NAME: zdy国内
 # AUTHOR: lusgdragon
 # REPO: https://github.com/Skywalker2389/airulelist
-# UPDATED: GIT_COMMITTER_DATE
+# UPDATED: ${ { github.event.repository.updated_at }}
 # DOMAIN-KEYWORD:5
 # DOMAIN-SUFFIX: 1
 # IP-ASN: 0
