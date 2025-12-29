@@ -53,3 +53,7 @@ DOMAIN-SUFFIX,zimuku.org
 
 # >吾爱破解网站
 DOMAIN-SUFFIX,52pojie.cn
+
+# >bilibili网站
+DOMAIN-SUFFIX,bilibili.com
+DOMAIN-KEYWORD,bilibili
