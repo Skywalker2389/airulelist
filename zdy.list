@@ -1,7 +1,7 @@
 # NAME: zdy国内
 # AUTHOR: lusgdragon
 # REPO: https://github.com/Skywalker2389/airulelist
-# UPDATED: 2025-12-28 20:56
+# UPDATED: 2025-12-29 21:31
 # DOMAIN-KEYWORD:5
 # DOMAIN-SUFFIX: 1
 # IP-ASN: 0
@@ -50,3 +50,6 @@ DOMAIN-SUFFIX,tagxx.vip
 
 # > 字幕库
 DOMAIN-SUFFIX,zimuku.org
+
+# >吾爱破解网站
+DOMAIN-SUFFIX,52pojie.cn
