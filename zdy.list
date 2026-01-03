@@ -1,12 +1,8 @@
+# UPDATED:
+# COUNT:
 # NAME: zdy国内
 # AUTHOR: lusgdragon
 # REPO: https://github.com/Skywalker2389/airulelist
-# UPDATED: 2026-01-03 14:44:08
-# DOMAIN-KEYWORD:5
-# DOMAIN-SUFFIX: 1
-# IP-ASN: 0
-# IP-CIDR: 0
-# TOTAL: 33
 # 自定义不用代理、使用DIRECT策略的域名
 
 # > 银行类应用
@@ -51,7 +47,7 @@ DOMAIN-SUFFIX,tagxx.vip
 # > 字幕库
 DOMAIN-SUFFIX,zimuku.org
 
-# >吾爱破解网站
+# > 吾爱破解网站
 DOMAIN-SUFFIX,52pojie.cn
 
 # > 国内媒体
