@@ -1,5 +1,12 @@
 # airulelist
 <!-- RULE_STATS_START -->
+| Type | File | Count | Updated |
+|------|------|-------|---------|
+| list | 8App_Adblock_Final.list | 32 | 2026-01-03 16:17:50 |
+| list | OtherAI.list | 46 | 2026-01-03 16:17:50 |
+| conf | shadowrocket-a-nomad.conf | - |  |
+| list | zdy.list | 34 | 2026-01-03 18:17:31 |
+| list | zdyProxy.list | 2 | 2026-01-03 18:17:01 |
 <!-- RULE_STATS_END -->
 zdy.list～～～分流走DIRECT的规则；
 zdyProxy.list～～～分流走代理的规则；
