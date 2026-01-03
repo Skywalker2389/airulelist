@@ -11,3 +11,5 @@ DOMAIN-SUFFIX,linux.do
 
 # > githubusercontent
 DOMAIN-SUFFIX,githubusercontent.com
+DOMAIN-SUFFIX,instagram.com
+DOMAIN-SUFFIX,docker.com
