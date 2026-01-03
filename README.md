@@ -6,7 +6,7 @@
 | list | OtherAI.list | 46 | 2026-01-03 16:17:50 |
 | conf | shadowrocket-a-nomad.conf | - |  |
 | list | zdy.list | 36 | 2026-01-03 20:52:47 |
-| list | zdyProxy.list | 2 | 2026-01-03 18:17:01 |
+| list | zdyProxy.list | 4 | 2026-01-03 20:54:23 |
 <!-- RULE_STATS_END -->
 zdy.list～～～分流走DIRECT的规则；
 zdyProxy.list～～～分流走代理的规则；
