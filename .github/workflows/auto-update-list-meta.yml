@@ -3,6 +3,7 @@ name: Auto update .list metadata
 on:
   push:
     paths:
+      - "*.list"
       - "**/*.list"
 
 jobs:
