@@ -54,6 +54,10 @@ DOMAIN-SUFFIX,zimuku.org
 # >吾爱破解网站
 DOMAIN-SUFFIX,52pojie.cn
 
-# >bilibili网站
+# > 国内媒体
 DOMAIN-SUFFIX,bilibili.com
 DOMAIN-KEYWORD,bilibili
+DOMAIN-SUFFIX,douyin.com
+DOMAIN-SUFFIX,douyinvod.com
+DOMAIN-SUFFIX,douyincdn.com
+DOMAIN-KEYWORD,douyin-
