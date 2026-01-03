@@ -4,7 +4,7 @@
 |------|------|-------|---------|
 | list | 8App_Adblock_Final.list | 32 | 2026-01-03 16:17:50 |
 | list | OtherAI.list | 46 | 2026-01-03 16:17:50 |
-| conf | shadowrocket-a-nomad.conf | - | 2026-01-03 20:55:44 |
+| conf | shadowrocket-a-nomad.conf | - | 2026-01-03 20:58:45 |
 | list | zdy.list | 36 | 2026-01-03 20:52:47 |
 | list | zdyProxy.list | 4 | 2026-01-03 20:54:23 |
 <!-- RULE_STATS_END -->
