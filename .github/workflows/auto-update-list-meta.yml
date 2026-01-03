@@ -16,29 +16,32 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Update UPDATED and COUNT for all .list files
-        run: |
-          TIME=$(TZ=Asia/Shanghai date +"%Y-%m-%d %H:%M:%S")
+      - name: Update UPDATED and COUNT only for changed .list files
+  run: |
+    TIME=$(TZ=Asia/Shanghai date +"%Y-%m-%d %H:%M:%S")
 
-          for file in $(find . -name "*.list"); do
-            echo "Processing $file"
+    # 获取本次提交中被修改的 .list 文件
+    CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep '\.list$' || true)
 
-            COUNT=$(grep -v '^\s*$' "$file" | grep -v '^\s*#' | wc -l)
+    if [ -z "$CHANGED_FILES" ]; then
+      echo "No .list files changed"
+      exit 0
+    fi
 
-            # UPDATED 行
-            if grep -q "^# UPDATED:" "$file"; then
-              sed -i "s|^# UPDATED:.*|# UPDATED: ${TIME}|" "$file"
-            else
-              sed -i "1i# UPDATED: ${TIME}" "$file"
-            fi
+    for file in $CHANGED_FILES; do
+      echo "Processing $file"
 
-            # COUNT 行（强制放在第二行）
-            if grep -q "^# COUNT:" "$file"; then
-              sed -i "s|^# COUNT:.*|# COUNT: ${COUNT}|" "$file"
-            else
-              sed -i "2i# COUNT: ${COUNT}" "$file"
-            fi
-          done
+      COUNT=$(grep -v '^\s*$' "$file" | grep -v '^\s*#' | wc -l | tr -d ' ')
+
+      # 删除旧的元信息（如果存在）
+      sed -i "/^# UPDATED:/d" "$file"
+      sed -i "/^# COUNT:/d" "$file"
+
+      # 插入新的元信息（固定在前两行）
+      sed -i "1i# COUNT: ${COUNT}" "$file"
+      sed -i "1i# UPDATED: ${TIME}" "$file"
+    done
+
 
       - name: Commit and push if changed
         run: |
