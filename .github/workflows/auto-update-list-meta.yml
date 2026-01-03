@@ -24,20 +24,25 @@ jobs:
       - name: Update changed .list files
         run: |
           set -e
+
           TIME=$(TZ=Asia/Shanghai date +"%Y-%m-%d %H:%M:%S")
+          CHANGED_LISTS=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" | grep '\.list$' || true)
 
-          git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" \
-            | grep '\.list$' || true | while read file; do
-              [ -f "$file" ] || continue
-              echo "Updating list: $file"
+          if [ -z "$CHANGED_LISTS" ]; then
+            echo "No .list files changed"
+          fi
 
-              COUNT=$(grep -v '^\s*$' "$file" | grep -v '^\s*#' | wc -l | tr -d ' ')
+          for file in $CHANGED_LISTS; do
+            [ -f "$file" ] || continue
+            echo "Updating list: $file"
 
-              sed -i '/^# UPDATED:/d' "$file"
-              sed -i '/^# COUNT:/d' "$file"
+            COUNT=$(grep -v '^\s*$' "$file" | grep -v '^\s*#' | wc -l | tr -d ' ')
 
-              sed -i "1i# COUNT: ${COUNT}" "$file"
-              sed -i "1i# UPDATED: ${TIME}" "$file"
+            sed -i '/^# UPDATED:/d' "$file"
+            sed -i '/^# COUNT:/d' "$file"
+
+            sed -i "1i# COUNT: ${COUNT}" "$file"
+            sed -i "1i# UPDATED: ${TIME}" "$file"
           done
 
       # =======================
@@ -46,19 +51,24 @@ jobs:
       - name: Update changed .conf files
         run: |
           set -e
+
           TIME=$(TZ=Asia/Shanghai date +"%Y-%m-%d %H:%M:%S")
+          CHANGED_CONFS=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" | grep '\.conf$' || true)
 
-          git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" \
-            | grep '\.conf$' || true | while read file; do
-              [ -f "$file" ] || continue
-              echo "Updating conf: $file"
+          if [ -z "$CHANGED_CONFS" ]; then
+            echo "No .conf files changed"
+          fi
 
-              sed -i '/^# UPDATED:/d' "$file"
-              sed -i "1i# UPDATED: ${TIME}" "$file"
+          for file in $CHANGED_CONFS; do
+            [ -f "$file" ] || continue
+            echo "Updating conf: $file"
+
+            sed -i '/^# UPDATED:/d' "$file"
+            sed -i "1i# UPDATED: ${TIME}" "$file"
           done
 
       # =======================
-      # 3. 更新 README 统计（list + conf）
+      # 3. 更新 README（list + conf）
       # =======================
       - name: Update README statistics
         run: |
@@ -73,7 +83,7 @@ jobs:
           echo "|------|------|-------|---------|" >> "$TMP"
 
           find . \( -name "*.list" -o -name "*.conf" \) | sort | while read file; do
-            TYPE=$(echo "$file" | sed 's/.*\.//')
+            TYPE="${file##*.}"
             FILE="${file#./}"
 
             UPDATED=$(grep "^# UPDATED:" "$file" | head -n1 | sed 's/# UPDATED: //')
