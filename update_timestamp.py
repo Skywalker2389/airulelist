@@ -9,7 +9,7 @@
 import os
 import re
 import sys
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 import subprocess
 
 def update_timestamp():
@@ -27,19 +27,26 @@ def update_timestamp():
             content = f.read()
         
         # 获取当前时间（北京时间 UTC+8）
-        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        beijing_tz = timezone(timedelta(hours=8))
+        current_time = datetime.now(beijing_tz).strftime("%Y-%m-%d %H:%M:%S")
         
-        # 定义要替换的模式：查找时间戳行
-        pattern = r'# 最后更新：\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} \(自动生成\)'
+        # 定义要替换的模式：查找时间戳行（更宽松的匹配）
+        pattern = r'# 最后更新：.*?\(自动生成\)'
         replacement = f'# 最后更新：{current_time} (自动生成)'
         
         # 执行替换
-        new_content = re.sub(pattern, replacement, content)
+        new_content, count = re.subn(pattern, replacement, content)
         
-        # 检查是否找到并替换了时间戳
+        # 如果没有找到时间戳行，尝试在文件开头添加
+        if count == 0:
+            print("未找到时间戳行，将在文件开头添加...")
+            new_content = f'# 最后更新：{current_time} (自动生成)\n{content}'
+            count = 1
+        
+        # 检查是否有变化
         if new_content == content:
-            print("警告: 未找到时间戳行，可能配置文件格式有误")
-            return False
+            print("配置文件无需更新")
+            return True
         
         # 写回文件
         with open(config_file, 'w', encoding='utf-8') as f:
@@ -49,15 +56,22 @@ def update_timestamp():
         
         # 将更新后的文件添加到 git staging area
         try:
-            subprocess.run(['git', 'add', config_file], check=True, capture_output=True)
+            result = subprocess.run(['git', 'add', config_file], 
+                                  check=True, 
+                                  capture_output=True, 
+                                  text=True)
             print(f"✅ 已将 {config_file} 添加到 git staging area")
         except subprocess.CalledProcessError as e:
-            print(f"警告: 无法将文件添加到 git staging area: {e}")
+            print(f"警告: 无法将文件添加到 git staging area: {e.stderr}")
+        except FileNotFoundError:
+            print("警告: git 命令未找到，请确保 git 已安装")
         
         return True
         
     except Exception as e:
         print(f"错误: 更新时间戳失败 - {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 def main():
@@ -72,4 +86,4 @@ def main():
         sys.exit(1)
 
 if __name__ == "__main__":
-    main() 
+    main()
