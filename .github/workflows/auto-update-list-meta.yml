@@ -7,7 +7,7 @@ on:
       - "**/*.list"
 
 jobs:
-  update-meta:
+  update-metadata:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,37 +16,44 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Update UPDATED and COUNT only for changed .list files
-  run: |
-    TIME=$(TZ=Asia/Shanghai date +"%Y-%m-%d %H:%M:%S")
+      - name: Update UPDATED and COUNT for changed .list files
+        run: |
+          set -e
 
-    # 获取本次提交中被修改的 .list 文件
-    CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep '\.list$' || true)
+          TIME=$(TZ=Asia/Shanghai date +"%Y-%m-%d %H:%M:%S")
 
-    if [ -z "$CHANGED_FILES" ]; then
-      echo "No .list files changed"
-      exit 0
-    fi
+          # 获取本次 push 中发生变化的 .list 文件
+          CHANGED_FILES=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" | grep '\.list$' || true)
 
-    for file in $CHANGED_FILES; do
-      echo "Processing $file"
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No .list files changed"
+            exit 0
+          fi
 
-      COUNT=$(grep -v '^\s*$' "$file" | grep -v '^\s*#' | wc -l | tr -d ' ')
+          for file in $CHANGED_FILES; do
+            if [ ! -f "$file" ]; then
+              echo "File $file does not exist (deleted or renamed), skip"
+              continue
+            fi
 
-      # 删除旧的元信息（如果存在）
-      sed -i "/^# UPDATED:/d" "$file"
-      sed -i "/^# COUNT:/d" "$file"
+            echo "Processing $file"
 
-      # 插入新的元信息（固定在前两行）
-      sed -i "1i# COUNT: ${COUNT}" "$file"
-      sed -i "1i# UPDATED: ${TIME}" "$file"
-    done
+            # 统计有效规则行数（排除空行和注释）
+            COUNT=$(grep -v '^\s*$' "$file" | grep -v '^\s*#' | wc -l | tr -d ' ')
 
+            # 删除旧的元信息（如存在）
+            sed -i "/^# UPDATED:/d" "$file"
+            sed -i "/^# COUNT:/d" "$file"
+
+            # 插入新的元信息（固定在前两行）
+            sed -i "1i# COUNT: ${COUNT}" "$file"
+            sed -i "1i# UPDATED: ${TIME}" "$file"
+          done
 
       - name: Commit and push if changed
         run: |
           if git diff --quiet; then
-            echo "No changes detected"
+            echo "No changes to commit"
           else
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
