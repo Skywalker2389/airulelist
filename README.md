@@ -3,7 +3,7 @@
 | Type | File | Count | Updated |
 |------|------|-------|---------|
 | list | 8App_Adblock_Final.list | 32 | 2026-01-03 16:17:50 |
-| list | OtherAI.list | 53 | 2026-04-03 20:55:28 |
+| list | OtherAI.list | 54 | 2026-06-23 18:22:11 |
 | conf | shadowrocket-a-nomad.conf | - | 2026-02-23 21:31:09 |
 | list | zdy.list | 36 | 2026-01-03 20:52:47 |
 | list | zdyProxy.list | 8 | 2026-05-22 22:17:08 |
