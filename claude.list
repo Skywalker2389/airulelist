@@ -1,8 +1,7 @@
 # UPDATED: 2026-09-13 11:40:00
 # COUNT: 27
-# 8App Adblock Rule List (Enhanced + Weibo)
+# Claude专用规则，置于所有规则之前
 # 仅包含纯规则项（可用于 RULE-SET 或其他工具）
-
 
 # 核心域名（DOMAIN-SUFFIX 已覆盖所有 *.anthropic.com 子域名）
 DOMAIN-SUFFIX,anthropic.com
@@ -44,4 +43,3 @@ keyword:datadog
 keyword:sentry
 keyword:sift
 geosite:category-ntp
-
