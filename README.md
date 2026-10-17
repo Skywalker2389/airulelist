@@ -6,7 +6,7 @@
 | list | OtherAI.list | 58 | 2026-10-17 09:02:35 |
 | list | claude.list | 27 | 2026-09-13 11:44:30 |
 | conf | shadowrocket-a-nomad.conf | - | 2026-02-23 21:31:09 |
-| list | tailscale.list | 27 | 2026-10-17 19:09:37 |
+| list | tailscale.list | 2 | 2026-10-17 19:19:43 |
 | list | zdy.list | 36 | 2026-01-03 20:52:47 |
 | list | zdyProxy.list | 7 | 2026-10-12 19:24:55 |
 <!-- RULE_STATS_END -->
