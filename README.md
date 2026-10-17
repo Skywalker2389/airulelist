@@ -3,7 +3,7 @@
 | Type | File | Count | Updated |
 |------|------|-------|---------|
 | list | App_Adblock_Final.list | 167533 | 2026-09-13 10:59:50 |
-| list | OtherAI.list | 54 | 2026-06-23 18:22:11 |
+| list | OtherAI.list | 56 | 2026-10-17 08:57:48 |
 | list | claude.list | 27 | 2026-09-13 11:44:30 |
 | conf | shadowrocket-a-nomad.conf | - | 2026-02-23 21:31:09 |
 | list | zdy.list | 36 | 2026-01-03 20:52:47 |
