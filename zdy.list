@@ -7,13 +7,15 @@
 # 自定义不用代理、使用DIRECT策略的域名
 
 # > 银行类应用
-DOMAIN-KEYWORD,ccb
-DOMAIN-KEYWORD,cmbchina
-DOMAIN-SUFFIX,ccb.com
-DOMAIN-SUFFIX,cmbchina.com
-DOMAIN-SUFFIX,bankcomm.com
-DOMAIN-SUFFIX,icbc.com.cn
-DOMAIN-SUFFIX,abchina.com
+DOMAIN-KEYWORD,ccb                  #建设银行
+DOMAIN-KEYWORD,cmbchina             #招商银行
+DOMAIN-SUFFIX,ccb.com               #建设银行
+DOMAIN-SUFFIX,ccb.cn                #建设银行
+DOMAIN-SUFFIX,cmbchina.com          #招商银行
+DOMAIN-SUFFIX,bankcomm.com          #交通银行
+DOMAIN-SUFFIX,icbc.com.cn           #工商银行
+DOMAIN-SUFFIX,abchina.com           #农业银行
+DOMAIN-SUFFIX,shrcb.com             #上海农商银行
 
 # > 音乐社区
 DOMAIN,y.wjhe.top
